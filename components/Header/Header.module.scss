@@ -1,7 +1,7 @@
 .root {
   width: 100%;
   position: fixed;
-  background-color: #fff4e2 !important;
+  background-color: #feebef !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,6 +9,7 @@
   height: 60px;
   margin-bottom: 14px;
   z-index: 1;
+  border-radius: 0;
 }
 
 
@@ -53,8 +54,8 @@
 
     &:hover, &:focus {
       background-color: #fff;
-      border-color: darken(#fff4e2, 15%);
-      box-shadow: 0 0 0 3px rgb(229 160 64 / 12%);
+      border-color: #ffbbc9;
+      box-shadow: 0 0 0 3px rgb(229 92 120 / 12%);;
     }
   }
 }

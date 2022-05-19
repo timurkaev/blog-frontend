@@ -27,9 +27,13 @@ const Header: React.FC = () => {
           <input placeholder={'Поиск'} />
         </div>
 
-        <Button className={styles.penButton} variant="contained">
-          Новая запись
-        </Button>
+        <Link href="/write">
+          <a>
+            <Button className={styles.penButton} variant="contained">
+              Новая запись
+            </Button>
+          </a>
+        </Link>
       </div>
       <div className="d-flex align-center">
         <IconButton>

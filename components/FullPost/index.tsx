@@ -9,7 +9,7 @@ import MessageIcon from '@material-ui/icons/SmsOutlined';
 const FullPost = () => {
   return (
     <Paper elevation={0} className={styles.paper}>
-      <div style={{ margin: '0 auto', width: 680 }}>
+      <div className="container">
         <Typography variant="h4" className={styles.title}>
           Как мы запустили первый глэмпинг в Ростовской области и вывели его в
           прибыль на следующий месяц
