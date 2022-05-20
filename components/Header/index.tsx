@@ -1,6 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
-import { Paper, Button, IconButton, Avatar } from '@material-ui/core';
+import {
+  Paper,
+  Button,
+  IconButton,
+  Avatar,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Typography,
+} from '@material-ui/core';
 
 import styles from './Header.module.scss';
 
@@ -9,8 +20,19 @@ import MessageIcon from '@material-ui/icons/SmsOutlined';
 import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandIcon from '@material-ui/icons/ExpandMoreOutlined';
+import AuthDialog from '../AuthDialog';
 
 const Header: React.FC = () => {
+  const [authVisible, setAuthVisible] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setAuthVisible(true);
+  };
+
+  const handleClose = () => {
+    setAuthVisible(false);
+  };
+
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className="d-flex align-center">
@@ -36,7 +58,7 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <div className="d-flex align-center">
-        <IconButton>
+        <IconButton onClick={handleClickOpen}>
           <MessageIcon />
         </IconButton>
         <IconButton>
@@ -53,6 +75,7 @@ const Header: React.FC = () => {
           </a>
         </Link>
       </div>
+      <AuthDialog onClose={handleClose} visible={authVisible} />
     </Paper>
   );
 };
