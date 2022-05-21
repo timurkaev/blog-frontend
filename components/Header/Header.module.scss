@@ -65,3 +65,20 @@
   margin-right: 6px;
   border-radius: 20% !important;
 }
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 15px;
+
+  svg {
+    margin-right: 10px;
+  }
+
+  &:hover {
+    color: #aa7f83;
+  }
+}

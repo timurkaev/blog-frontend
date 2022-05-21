@@ -21,15 +21,16 @@ import NotificationIcon from '@material-ui/icons/NotificationsNoneOutlined';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExpandIcon from '@material-ui/icons/ExpandMoreOutlined';
 import AuthDialog from '../AuthDialog';
+import UserIcon from '@material-ui/icons/AccountCircleOutlined';
 
 const Header: React.FC = () => {
   const [authVisible, setAuthVisible] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const openAuthDialog = () => {
     setAuthVisible(true);
   };
 
-  const handleClose = () => {
+  const closeAuthDialog = () => {
     setAuthVisible(false);
   };
 
@@ -58,24 +59,29 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <div className="d-flex align-center">
-        <IconButton onClick={handleClickOpen}>
+        <IconButton>
           <MessageIcon />
         </IconButton>
         <IconButton>
           <NotificationIcon />
         </IconButton>
-        <Link href="/profile/1">
-          <a className="d-flex align-center">
-            <Avatar
-              className={styles.avatar}
-              alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
-            />
-            <ExpandIcon />
-          </a>
-        </Link>
+        {/*<Link href="/profile/1">*/}
+        {/*  <a className="d-flex align-center">*/}
+        {/*    <Avatar*/}
+        {/*      className={styles.avatar}*/}
+        {/*      alt="Remy Sharp"*/}
+        {/*      src="/static/images/avatar/1.jpg"*/}
+        {/*    />*/}
+        {/*    <ExpandIcon />*/}
+        {/*  </a>*/}
+        {/*</Link>*/}
+
+        <div onClick={openAuthDialog} className={styles.loginButton}>
+          <UserIcon />
+          Войти
+        </div>
       </div>
-      <AuthDialog onClose={handleClose} visible={authVisible} />
+      <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
     </Paper>
   );
 };
