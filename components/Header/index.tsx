@@ -42,7 +42,9 @@ const Header: React.FC = () => {
         </IconButton>
         <div className={styles.logo}>
           <Link href="/">
-            <img height={40} src="/static/img/logo.svg" alt="Logo" />
+            <a>
+              <img height={40} src="/static/img/logo.svg" alt="Logo" />
+            </a>
           </Link>
         </div>
         <div className={styles.searchBlock}>
