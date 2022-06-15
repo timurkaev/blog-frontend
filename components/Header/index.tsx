@@ -1,17 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import {
-  Paper,
-  Button,
-  IconButton,
-  Avatar,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Typography,
-} from '@material-ui/core';
+import { Paper, Button, IconButton, Avatar } from '@material-ui/core';
 
 import styles from './Header.module.scss';
 
@@ -22,9 +11,14 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ExpandIcon from '@material-ui/icons/ExpandMoreOutlined';
 import AuthDialog from '../AuthDialog';
 import UserIcon from '@material-ui/icons/AccountCircleOutlined';
+import { useAppSelector } from '../../redux/hooks';
+import { selectUserData } from '../../redux/slices/user';
 
 const Header: React.FC = () => {
   const [authVisible, setAuthVisible] = React.useState(false);
+  const userData = useAppSelector(selectUserData);
+
+  console.log(userData);
 
   const openAuthDialog = () => {
     setAuthVisible(true);
@@ -67,21 +61,23 @@ const Header: React.FC = () => {
         <IconButton>
           <NotificationIcon />
         </IconButton>
-        {/*<Link href="/profile/1">*/}
-        {/*  <a className="d-flex align-center">*/}
-        {/*    <Avatar*/}
-        {/*      className={styles.avatar}*/}
-        {/*      alt="Remy Sharp"*/}
-        {/*      src="/static/images/avatar/1.jpg"*/}
-        {/*    />*/}
-        {/*    <ExpandIcon />*/}
-        {/*  </a>*/}
-        {/*</Link>*/}
-
-        <div onClick={openAuthDialog} className={styles.loginButton}>
-          <UserIcon />
-          Войти
-        </div>
+        {userData ? (
+          <Link href="/profile/1">
+            <a className="d-flex align-center">
+              <Avatar
+                className={styles.avatar}
+                alt={userData.fullName[0]}
+                src="/static/images/avatar/1.jpg"
+              />
+              <ExpandIcon />
+            </a>
+          </Link>
+        ) : (
+          <div onClick={openAuthDialog} className={styles.loginButton}>
+            <UserIcon />
+            Войти
+          </div>
+        )}
       </div>
       <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
     </Paper>

@@ -1,11 +1,17 @@
 import '../styles/globals.scss';
 import 'macro-css';
+
 import { CssBaseline, MuiThemeProvider } from '@material-ui/core';
 import { theme } from '../theme';
 import Head from 'next/head';
 import Header from '../components/Header';
 
-function MyApp({ Component, pageProps }) {
+import { Provider } from 'react-redux';
+import { store, wrapper } from '../redux/store';
+
+import { AppProps } from 'next/app';
+
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -26,11 +32,10 @@ function MyApp({ Component, pageProps }) {
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Header />
-
         <Component {...pageProps} />
       </MuiThemeProvider>
     </>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
